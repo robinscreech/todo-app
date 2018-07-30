@@ -37,7 +37,7 @@ todoRoutes.route('/add').post(function(req, res){
 
 // delete a todo item from DB
 
-todoRoutes.route('/delete/id').get(function (req, res, next){
+todoRoutes.route('/delete/:id').get(function (req, res, next){
 	var id = req.params.id
 	Todo.findByIdAndRemove(id, function(err, todo){
 		if (err){

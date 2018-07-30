@@ -3,9 +3,11 @@
 Tutorial from : [https://dev.to/abiodunjames/](https://dev.to/abiodunjames/build-a-todo-app-with-nodejs-expressjs-mongodb-and-vuejs--part-1--29n7
 )
 
-`sudo service mongod star`
+`sudo service mongod start`
 `service mongod status`
 `sudo service mongod stop`
+
+`npm run build`
 
 Create Single todo item
 
