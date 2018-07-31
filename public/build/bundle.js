@@ -10777,7 +10777,7 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 		},
 		updateTodo(todo) {
 			let id = todo._id;
-			let uri = 'http:localhost:4000/api/update/' + id;
+			let uri = 'http://localhost:4000/api/update/' + id;
 			todo.editing = false;
 			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(uri, todo).then(response => {
 				console.log(response);
@@ -10786,7 +10786,7 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 			});
 		},
 		deleteTodo(id) {
-			let uri = 'http://locahost:4000/api/delete/' + id;
+			let uri = 'http://localhost:4000/api/delete/' + id;
 			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(uri);
 			this.fetchTodo();
 		},

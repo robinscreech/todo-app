@@ -46,7 +46,7 @@
 			},
 			updateTodo(todo){
 				let id = todo._id;
-				let uri = 'http:localhost:4000/api/update/' + id;
+				let uri = 'http://localhost:4000/api/update/' + id;
 				todo.editing = false;
 				axios.post(uri, todo).then((response) => {
 					console.log(response)
@@ -55,7 +55,7 @@
 				})
 			},
 			deleteTodo(id) {
-				let uri = 'http://locahost:4000/api/delete/' + id;
+				let uri = 'http://localhost:4000/api/delete/' + id;
 				axios.get(uri);
 				this.fetchTodo();
 			},
