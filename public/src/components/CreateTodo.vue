@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2>Create a Todo List</h2>
+		<h2>Add to-do item</h2>
 		<form @submit.prevent>
 			<div class='form-group'>
 				<input type="text" class="form-control" @keypress="typing=true" placeholder="What do you want to do?" v-model="todo" @keyup.enter="addTodo($event)"/>

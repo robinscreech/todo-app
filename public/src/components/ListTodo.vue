@@ -1,14 +1,16 @@
 <template>
 	<div>
 		<div class="col-md-12" v-show="todos.length>0">
-			<h3>Todo Items</h3>
+			<h3>To do</h3>
 			<div class="row mrb-10" v-for="todo in todos">
 				<div class="input-group m-b-5">
-					<span class="input-group-addon addon-right">
+					<span class="input-group-addon addon-right input-group-text btn btn-primary">
 						<input type="checkbox" v-model="todo.done" :value="todo.done" v-on:change="updateTodo(todo)" title="Mark as Done?" />
 					</span>
+					
 					<input type="text" class="form-control" :class="todo.done?'todo__done':''" v-model="todo.name" @keypress="todo.editing=true" @keyup.enter="updateTodo(todo)">
-					<span class="input-group-addon addon-left" title="Delete Todo?" v-on:click="deleteTodo(todo._id)">X</span>
+					
+					<span class="input-group-addon addon-left input-group-text btn btn-danger" title="Delete Todo?" v-on:click="deleteTodo(todo._id)">X</span>
 				</div>
 				<span class="help-block small" v-show="todo.editing">Hit enter to update</span>
 			</div>
@@ -20,6 +22,11 @@
 				You do not have any items
 			</p>
 		</div>
+
+		 <md-button class="md-raised md-primary" v-on:click="fillTable()">Fill table</md-button>
+        <md-button class="md-raised md-primary" v-on:click="clearTable()">Clear table</md-button>
+        <br />
+
 	</div>
 </template>
 
@@ -87,9 +94,11 @@
         background-color: none !important;
         border-left: 0px !important;
         cursor: pointer !important;
+        border-radius: 0px !important;
     }
     .addon-right {
         background-color: none !important;
         border-right: 0px !important;
+        border-radius: 0px !important;
     }
 </style>
