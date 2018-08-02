@@ -1,13 +1,14 @@
 <template>
-	<div>
-		<h2>Add to-do item</h2>
-		<form @submit.prevent>
-			<div class='form-group'>
-				<input type="text" class="form-control" @keypress="typing=true" placeholder="What do you want to do?" v-model="todo" @keyup.enter="addTodo($event)"/>
-				<span class="help-block small text-center" v-show="typing">Hit enter to save</span>
-			</div>
-		</form>
-	</div> 
+	<v-container>
+		<v-layout row wrap>
+			<v-flex xs12 class="display-1">Add to-do item</v-flex>
+			<v-flex mt-2>
+				<v-form @submit.prevent>
+					<v-text-field clearable box height="30" hint="Press enter to save." @keypress="typing=true" label="What do you want to do?" v-model="todo" @keyup.enter="addTodo($event)"></v-text-field>
+				</v-form>
+			</v-flex>
+		</v-layout>
+	</v-container> 
 </template>
 
 <script>

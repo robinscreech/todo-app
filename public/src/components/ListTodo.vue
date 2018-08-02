@@ -1,20 +1,39 @@
 <template>
-	<div>
-		<div class="col-md-12" v-show="todos.length>0">
-			<h3>To do</h3>
-			<div class="row mrb-10" v-for="todo in todos">
-				<div class="input-group m-b-5">
-					<span class="input-group-addon addon-right input-group-text btn btn-primary">
-						<input type="checkbox" v-model="todo.done" :value="todo.done" v-on:change="updateTodo(todo)" title="Mark as Done?" />
-					</span>
-					
-					<input type="text" class="form-control" :class="todo.done?'todo__done':''" v-model="todo.name" @keypress="todo.editing=true" @keyup.enter="updateTodo(todo)">
-					
-					<span class="input-group-addon addon-left input-group-text btn btn-danger" title="Delete Todo?" v-on:click="deleteTodo(todo._id)">X</span>
-				</div>
-				<span class="help-block small" v-show="todo.editing">Hit enter to update</span>
-			</div>
-		</div>
+	<v-container>
+		<v-layout row wrap v-show="todos.length>0">
+
+			<v-flex xs12 headline>To do</v-flex>
+			
+			<v-layout column>	
+			<v-layout v-for="todo in todos">
+				<v-flex xs>
+					<!--<v-checkbox v-model="todo.done" :value="todo.done" v-on:change="updateTodo(todo)" hint="Mark as Done?"></v-checkbox>-->
+
+					<v-btn v-if=todo.done outline small fab color=success v-model="todo.done" :value="todo.done" v-on:click="updateTodo(todo.done=true)">
+						<v-icon>done</v-icon>
+					</v-btn>
+					<v-btn v-else outline small fab color=success v-model="todo.done" :value="todo.done" v-on:click="updateTodo(todo)">
+						<v-icon></v-icon>
+					</v-btn>
+
+
+				</v-flex>
+
+				<v-flex xs10>
+					<v-text-field height="20" hint="Press enter to save." :class="todo.done?'todo__done':''" v-model="todo.name" @keypress="todo.editing=true" @keyup.enter="updateTodo(todo)"></v-text-field>
+				</v-flex>
+				<v-flex xs1>	
+					<v-btn outline small fab color=error v-on:click="deleteTodo(todo._id)">
+						<v-icon>delete</v-icon>
+					</v-btn>
+				</v-flex>
+
+				<!--<span class="help-block small" v-show="todo.editing">Hit enter to update</span>-->			
+			</v-layout>
+			</v-layout>
+
+		</v-layout>
+
 		<div class="row alert alert-info text-center" v-show="todos.length==0">
 			<p class="alert alert-info">
 				<strong>All Caught Up</strong>
@@ -23,11 +42,7 @@
 			</p>
 		</div>
 
-		 <md-button class="md-raised md-primary" v-on:click="fillTable()">Fill table</md-button>
-        <md-button class="md-raised md-primary" v-on:click="clearTable()">Clear table</md-button>
-        <br />
-
-	</div>
+	</v-container>
 </template>
 
 <script type="text/javascript">
@@ -52,6 +67,7 @@
 				});
 			},
 			updateTodo(todo){
+				console.log(todo)
 				let id = todo._id;
 				let uri = 'http://localhost:4000/api/update/' + id;
 				todo.editing = false;
@@ -76,10 +92,10 @@
 </script>
 
 <style scoped>
-    .delete__icon {}
     .todo__done {
         text-decoration: line-through !important
     }
+/*    .delete__icon {}
     .no_border_left_right {
         border-left: 0px;
         border-right: 0px;
@@ -100,5 +116,5 @@
         background-color: none !important;
         border-right: 0px !important;
         border-radius: 0px !important;
-    }
+    }*/
 </style>

@@ -1,17 +1,12 @@
 'use strict'
 
 import Vue from 'vue';
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 
 import App from './components/App.vue'
 
-
-// import VueMaterial from 'vue-material'
-// import 'vue-material/dist/vue-material.css'
-
-// Vue.use(VueMaterial)
-
-import Vuetify from 'vuetify'
  
 Vue.use(Vuetify)
 
