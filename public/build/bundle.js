@@ -12495,6 +12495,7 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 //
 //
 //
+//
 
 
 
@@ -34249,6 +34250,22 @@ var render = function() {
                     "v-flex",
                     { attrs: { xs: "" } },
                     [
+                      _c("v-checkbox", {
+                        attrs: { value: todo.done, hint: "Mark as Done?" },
+                        on: {
+                          change: function($event) {
+                            _vm.updateTodo(todo)
+                          }
+                        },
+                        model: {
+                          value: todo.done,
+                          callback: function($$v) {
+                            _vm.$set(todo, "done", $$v)
+                          },
+                          expression: "todo.done"
+                        }
+                      }),
+                      _vm._v(" "),
                       todo.done
                         ? _c(
                             "v-btn",
@@ -34258,11 +34275,11 @@ var render = function() {
                                 small: "",
                                 fab: "",
                                 color: "success",
-                                value: todo.done
+                                value: true
                               },
                               on: {
                                 click: function($event) {
-                                  _vm.updateTodo((todo.done = true))
+                                  _vm.updateTodo(todo)
                                 }
                               },
                               model: {
@@ -34284,7 +34301,7 @@ var render = function() {
                                 small: "",
                                 fab: "",
                                 color: "success",
-                                value: todo.done
+                                value: null
                               },
                               on: {
                                 click: function($event) {
