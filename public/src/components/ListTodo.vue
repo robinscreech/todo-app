@@ -7,17 +7,12 @@
 			<v-layout column>	
 			<v-layout v-for="todo in todos">
 				<v-flex xs>
-					<v-checkbox v-model="todo.done" :value="todo.done" v-on:change="updateTodo(todo)" hint="Mark as Done?"></v-checkbox>
-
-					<v-btn v-if=todo.done outline small fab color=success v-model="todo.done" :value='true' v-on:click="updateTodo(todo)">
-						<v-icon>done</v-icon>
-					</v-btn>
-
-					<v-btn v-else outline small fab color=success v-model="todo.done" :value='null' v-on:click="updateTodo(todo)">
-						<v-icon></v-icon>
-					</v-btn>
-
-
+					<v-checkbox 
+						v-model="todo.done" 
+						:value="todo.done" 
+						v-on:change="updateTodo(todo)" 
+						hint="Mark as Done?">
+					</v-checkbox>
 				</v-flex>
 
 				<v-flex xs10>
@@ -68,7 +63,10 @@
 				});
 			},
 			updateTodo(todo){
-				console.log(todo)
+				//testing what a todo is
+				console.log(todo._id)
+				console.log(todo.done)
+
 				let id = todo._id;
 				let uri = 'http://localhost:4000/api/update/' + id;
 				todo.editing = false;

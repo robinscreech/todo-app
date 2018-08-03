@@ -378,7 +378,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.5.16
+ * Vue.js v2.5.17
  * (c) 2014-2018 Evan You
  * Released under the MIT License.
  */
@@ -5454,7 +5454,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.5.16';
+Vue.version = '2.5.17';
 
 /*  */
 
@@ -12491,11 +12491,6 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -12519,7 +12514,10 @@ const bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a();
 			});
 		},
 		updateTodo(todo) {
-			console.log(todo);
+			//testing what a todo is
+			console.log(todo._id);
+			console.log(todo.done);
+
 			let id = todo._id;
 			let uri = 'http://localhost:4000/api/update/' + id;
 			todo.editing = false;
@@ -34264,61 +34262,7 @@ var render = function() {
                           },
                           expression: "todo.done"
                         }
-                      }),
-                      _vm._v(" "),
-                      todo.done
-                        ? _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                outline: "",
-                                small: "",
-                                fab: "",
-                                color: "success",
-                                value: true
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.updateTodo(todo)
-                                }
-                              },
-                              model: {
-                                value: todo.done,
-                                callback: function($$v) {
-                                  _vm.$set(todo, "done", $$v)
-                                },
-                                expression: "todo.done"
-                              }
-                            },
-                            [_c("v-icon", [_vm._v("done")])],
-                            1
-                          )
-                        : _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                outline: "",
-                                small: "",
-                                fab: "",
-                                color: "success",
-                                value: null
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.updateTodo(todo)
-                                }
-                              },
-                              model: {
-                                value: todo.done,
-                                callback: function($$v) {
-                                  _vm.$set(todo, "done", $$v)
-                                },
-                                expression: "todo.done"
-                              }
-                            },
-                            [_c("v-icon")],
-                            1
-                          )
+                      })
                     ],
                     1
                   ),
